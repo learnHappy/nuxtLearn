@@ -100,7 +100,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'starter',
+    title: 'nuxtLearn',
     meta: [{
       charset: 'utf-8'
     }, {
