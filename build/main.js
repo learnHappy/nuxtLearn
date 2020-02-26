@@ -166,6 +166,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var koa__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(koa__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var nuxt__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! nuxt */ "nuxt");
 /* harmony import */ var nuxt__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nuxt__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _interface_city__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./interface/city */ "./server/interface/city.js");
+
 
 
 
@@ -185,6 +187,7 @@ async function start() {
     await builder.build();
   }
 
+  app.use(_interface_city__WEBPACK_IMPORTED_MODULE_2__["default"].routes()).use(_interface_city__WEBPACK_IMPORTED_MODULE_2__["default"].allowedMethods());
   app.use(ctx => {
     ctx.status = 200;
     ctx.respond = false; // Mark request as handled for Koa
@@ -201,6 +204,30 @@ start();
 
 /***/ }),
 
+/***/ "./server/interface/city.js":
+/*!**********************************!*\
+  !*** ./server/interface/city.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var koa_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! koa-router */ "koa-router");
+/* harmony import */ var koa_router__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(koa_router__WEBPACK_IMPORTED_MODULE_0__);
+
+const router = new koa_router__WEBPACK_IMPORTED_MODULE_0___default.a({
+  prefix: '/city'
+});
+router.get('/list', async function (ctx) {
+  ctx.body = {
+    list: ['北京', '天津']
+  };
+});
+/* harmony default export */ __webpack_exports__["default"] = (router);
+
+/***/ }),
+
 /***/ "koa":
 /*!**********************!*\
   !*** external "koa" ***!
@@ -209,6 +236,17 @@ start();
 /***/ (function(module, exports) {
 
 module.exports = require("koa");
+
+/***/ }),
+
+/***/ "koa-router":
+/*!*****************************!*\
+  !*** external "koa-router" ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("koa-router");
 
 /***/ }),
 
